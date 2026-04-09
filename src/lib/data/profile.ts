@@ -9,6 +9,6 @@ export const profile = {
 		github: 'https://github.com/flavien-hugs',
 		linkedin: 'https://linkedin.com/in/flavien-hugs',
 		twitter: 'https://twitter.com/flavien-hugs',
-        whatsapp: 'https://wa.me/2250700000000' // Replace with your actual number
+		whatsapp: 'https://wa.me/2250700000000'
 	}
 };

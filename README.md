@@ -1,42 +1,74 @@
-# sv
+# Modern Backend Engineer Portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A high-performance, minimalist personal portfolio designed for backend engineers.
+Built with the latest tech stack focusing on clean architecture, technical density,
+and a premium developer aesthetic.
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework**: [SvelteKit 2.x](https://kit.svelte.dev/) with **Svelte 5 (Runes)**
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4-alpha) (Direct CSS imports, zero-config)
+- **State Management**: Svelte 5 `$state` and `$derived` for reactive i18n
+- **Language**: TypeScript
+- **Design**: "Engineering/Blueprint" monochrome aesthetic with Emerald accents
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Key Features
 
-To recreate this project with the same configuration:
+- **Technical Hero**: Left-aligned high-impact typography with a minimalist system status
+  sidebar.
+- **Bilingual (i18n)**: Fully reactive language switching (English/French) using Svelte 5
+  runes and localStorage persistence.
+- **Clean Architecture About**: A "Philosophy" section focusing on Hexagonal \
+  Architecture, Security, and Reliability.
+- **Work Path**: Minimalist timeline for professional experience.
+- **Technical Arsenal**: Categorized skill grid with a professional grid system.
+- **WhatsApp Integration**: Direct-to-chat CTA for quick professional connections.
+- **Responsive & Built for Performance**: Near-perfect Lighthouse scores through
+  optimized asset loading and minimal hydration.
 
-```sh
-# recreate this project
-npx sv@0.15.0 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" --install npm my-portfolio
-```
+## Getting Started
 
-## Developing
+### Prerequisites
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- Node.js (v20 or higher recommended)
+- npm / pnpm / yarn
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/flavien-hugs/my-portfolio.git
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+### Development
+
+Start the development server with Hot Module Replacement (HMR):
 
 ```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Production Build
 
-To create a production version of your app:
+Create an optimized production bundle:
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build locally:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+npm run preview
+```
+
+## Project Structure
+
+- `src/lib/components/sections`: Modular homepage sections.
+- `src/lib/i18n.svelte.ts`: Lightweight Svelte 5 reactive i18n logic.
+- `src/lib/data`: Centralized data store (profile, projects, skills).
+- `src/routes/projects`: Dynamic project listing and detail pages.
