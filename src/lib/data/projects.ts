@@ -65,11 +65,7 @@ export const projects: Project[] = [
 		stack: ['FastAPI', 'Celery', 'Redis', 'Docker'],
 		featured: false,
 		github: 'https://github.com/flavien-hugs/async-job-processor',
-		highlights: [
-			'Queue + worker system',
-			'Retry strategy + dead letter queue',
-			'Task monitoring'
-		],
+		highlights: ['Queue + worker system', 'Retry strategy + dead letter queue', 'Task monitoring'],
 		architecture: ['FastAPI API', 'Redis broker', 'Celery workers']
 	},
 	{

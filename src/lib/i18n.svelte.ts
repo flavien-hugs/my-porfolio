@@ -11,10 +11,10 @@ class I18n {
 			if (saved && (saved === 'en' || saved === 'fr')) {
 				this.current = saved;
 			} else {
-                // Default to French if it's the preference, otherwise browser lang
-                const browserLang = navigator.language.split('-')[0];
-                this.current = browserLang === 'fr' ? 'fr' : 'en';
-            }
+				// Default to French if it's the preference, otherwise browser lang
+				const browserLang = navigator.language.split('-')[0];
+				this.current = browserLang === 'fr' ? 'fr' : 'en';
+			}
 		}
 	}
 
@@ -26,9 +26,9 @@ class I18n {
 		}
 	}
 
-    t(en: string, fr: string) {
-        return this.current === 'fr' ? fr : en;
-    }
+	t(en: string, fr: string) {
+		return this.current === 'fr' ? fr : en;
+	}
 }
 
 export const lang = new I18n();

@@ -5,10 +5,17 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import { projects } from '$lib/data/projects';
 	import { page } from '$app/state';
-	
+
 	let slug = $derived(page.params.slug);
 	let project = $derived(projects.find((p) => p.slug === slug));
 </script>
+
+<svelte:head>
+	<title>{project ? `${project.title} | flavien HUGS` : 'Project not found | flavien HUGS'}</title>
+	{#if project}
+		<meta name="description" content={project.longDescription} />
+	{/if}
+</svelte:head>
 
 <Container>
 	<section class="py-20">
@@ -17,7 +24,7 @@
 			<p class="mt-4 max-w-2xl text-zinc-300">{project.longDescription}</p>
 
 			<div class="mt-6 flex flex-wrap gap-2">
-				{#each project.stack as tech}
+				{#each project.stack as tech (tech)}
 					<Badge text={tech} />
 				{/each}
 			</div>
@@ -36,7 +43,7 @@
 				<Card>
 					<h2 class="text-xl font-semibold">Highlights</h2>
 					<ul class="mt-4 space-y-2 text-zinc-300">
-						{#each project.highlights as item}
+						{#each project.highlights as item (item)}
 							<li>• {item}</li>
 						{/each}
 					</ul>
@@ -45,7 +52,7 @@
 				<Card>
 					<h2 class="text-xl font-semibold">Architecture</h2>
 					<ul class="mt-4 space-y-2 text-zinc-300">
-						{#each project.architecture as item}
+						{#each project.architecture as item (item)}
 							<li>• {item}</li>
 						{/each}
 					</ul>
