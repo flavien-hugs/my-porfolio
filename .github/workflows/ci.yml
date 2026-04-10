@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, master, develop, rc/**]
 
+# Restrict default token permissions globally (least-privilege)
+permissions:
+  contents: read
+
 jobs:
   quality-check:
     name: Quality Check
@@ -55,6 +59,9 @@ jobs:
     name: Docker Push
     runs-on: ubuntu-latest
     needs: docker-build
+    permissions:
+      contents: read
+      packages: write
     if: |
       github.ref == 'refs/heads/main' ||
       github.ref == 'refs/heads/develop'
