@@ -9,6 +9,11 @@
 	const allTech = [...new Set(projects.flatMap((p) => p.stack))].sort();
 </script>
 
+<svelte:head>
+	<title>Projects | flavien HUGS</title>
+	<meta name="description" content="Backend projects focused on engineering, architecture, security and deployment by Flavien HUGS." />
+</svelte:head>
+
 <Container>
 	<section class="py-10">
 		<h1 class="text-4xl font-bold">{lang.t('Projects', 'Projets')}</h1>

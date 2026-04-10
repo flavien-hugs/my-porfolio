@@ -10,6 +10,13 @@
 	let project = $derived(projects.find((p) => p.slug === slug));
 </script>
 
+<svelte:head>
+	<title>{project ? `${project.title} | flavien HUGS` : 'Project not found | flavien HUGS'}</title>
+	{#if project}
+		<meta name="description" content={project.longDescription} />
+	{/if}
+</svelte:head>
+
 <Container>
 	<section class="py-20">
 		{#if project}
