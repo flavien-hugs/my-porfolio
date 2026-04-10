@@ -11,7 +11,10 @@
 
 <svelte:head>
 	<title>Projects | flavien HUGS</title>
-	<meta name="description" content="Backend projects focused on engineering, architecture, security and deployment by Flavien HUGS." />
+	<meta
+		name="description"
+		content="Backend projects focused on engineering, architecture, security and deployment by Flavien HUGS."
+	/>
 </svelte:head>
 
 <Container>

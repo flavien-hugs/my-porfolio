@@ -4,7 +4,10 @@
 
 <svelte:head>
 	<title>Blog | flavien HUGS</title>
-	<meta name="description" content="Articles about FastAPI, architecture, security and DevOps by Flavien HUGS." />
+	<meta
+		name="description"
+		content="Articles about FastAPI, architecture, security and DevOps by Flavien HUGS."
+	/>
 </svelte:head>
 
 <Container>
