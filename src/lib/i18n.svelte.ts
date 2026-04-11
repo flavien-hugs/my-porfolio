@@ -1,7 +1,11 @@
 import { browser } from '$app/environment';
 
-type Language = 'en' | 'fr';
+export type Language = 'en' | 'fr';
 
+export type LocalizedString = {
+	en: string;
+	fr: string;
+};
 class I18n {
 	current = $state<Language>('fr');
 
