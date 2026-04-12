@@ -39,6 +39,12 @@
 				<Button href={profile.links.linkedin} variant="secondary"
 					>{lang.t("Let's connect", 'Parlons ensemble')}</Button
 				>
+				<button
+					onclick={() => window.print()}
+					class="ml-4 font-mono text-[10px] tracking-[0.2em] text-zinc-600 uppercase transition-colors hover:text-white print:hidden"
+				>
+					[{lang.t('Get CV', 'Télécharger CV')}]
+				</button>
 			</div>
 		</div>
 
@@ -47,7 +53,7 @@
 			<div class="flex flex-col gap-8 border-l border-zinc-900 pl-12">
 				<div class="flex flex-col gap-1">
 					<span class="font-mono text-[10px] tracking-[0.3em] text-zinc-600 uppercase"
-						>{lang.t('Core_Specialization', 'Spécialisation_Principale')}</span
+						>{lang.t('Core Specialization', 'Spécialisation Principale')}</span
 					>
 					<span class="text-sm font-medium text-zinc-400"
 						>{lang.t('Distributed Systems', 'Systèmes Distribués')}</span
@@ -55,26 +61,15 @@
 				</div>
 				<div class="flex flex-col gap-1">
 					<span class="font-mono text-[10px] tracking-[0.3em] text-zinc-600 uppercase"
-						>{lang.t('Base_Location', 'Localisation')}</span
+						>{lang.t('Base Location', 'Localisation')}</span
 					>
 					<span class="text-sm font-medium text-zinc-400">{profile.location} (GMT+0)</span>
 				</div>
 				<div class="flex flex-col gap-1">
 					<span class="font-mono text-[10px] tracking-[0.3em] text-zinc-600 uppercase"
-						>{lang.t('Primary_Stack', 'Stack_Primaire')}</span
+						>{lang.t('Primary Stack', 'Stack Primaire')}</span
 					>
-					<span class="text-sm font-medium text-zinc-400">Python / FastAPI / Go</span>
-				</div>
-				<div class="flex flex-col gap-1">
-					<span class="font-mono text-[10px] tracking-[0.3em] text-zinc-600 uppercase"
-						>{lang.t('System_Status', 'Statut_Système')}</span
-					>
-					<div class="flex items-center gap-2">
-						<div class="h-1 w-1 animate-pulse rounded-full bg-emerald-500"></div>
-						<span class="text-sm font-medium tracking-wider text-emerald-500/80 uppercase"
-							>{lang.t('Ready_for_deployment', 'Prêt_au_déploiement')}</span
-						>
-					</div>
+					<span class="text-sm font-medium text-zinc-400">Python / Go</span>
 				</div>
 			</div>
 		</div>

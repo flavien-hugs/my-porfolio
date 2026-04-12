@@ -24,7 +24,7 @@
 				<!-- Period -->
 				<div class="md:col-span-3">
 					<span class="font-mono text-xs font-bold tracking-widest text-zinc-600 uppercase">
-						{exp.period}
+						{typeof exp.period === 'string' ? exp.period : lang.t(exp.period.en, exp.period.fr)}
 					</span>
 				</div>
 
@@ -32,13 +32,15 @@
 				<div class="md:col-span-9">
 					<div class="mb-4 flex flex-col gap-1">
 						<h4 class="text-xl font-bold text-white transition-colors">
-							{exp.role}
+							{typeof exp.role === 'string' ? exp.role : lang.t(exp.role.en, exp.role.fr)}
 						</h4>
 						<p class="text-sm font-medium text-zinc-400">@ {exp.company}</p>
 					</div>
 
 					<p class="max-w-2xl text-sm leading-relaxed font-light text-zinc-500">
-						{exp.description}
+						{typeof exp.description === 'string'
+							? exp.description
+							: lang.t(exp.description.en, exp.description.fr)}
 					</p>
 				</div>
 			</div>

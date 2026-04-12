@@ -1,34 +1,119 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/Button.svelte';
 	import { profile } from '$lib/data/profile';
 	import { lang } from '$lib/i18n.svelte';
+
+	let input = $state('');
+	let history = $state<{ cmd: string; result: string }[]>([
+		{
+			cmd: 'whoami',
+			result: lang.t(
+				'Backend Engineer specializing in Python & Infrastructure.',
+				'Ingénieur Backend spécialisé en Python & Infrastructure.'
+			)
+		}
+	]);
+
+	function handleCommand(e: KeyboardEvent) {
+		if (e.key === 'Enter' && input.trim()) {
+			const cmd = input.trim().toLowerCase();
+			let result: string;
+
+			if (cmd === 'contact') {
+				result = `Email: ${profile.email}\nWhatsApp: ${profile.links.whatsapp}`;
+			} else if (cmd === 'help') {
+				result = 'Available commands: contact, clear, whoami, ping, linkedin, github';
+			} else if (cmd === 'clear') {
+				history = [];
+				input = '';
+				return;
+			} else if (cmd === 'ping') {
+				result = 'pong! (latency: 1ms)';
+			} else if (cmd === 'linkedin') {
+				window.open(profile.links.linkedin, '_blank');
+				result = 'Opening LinkedIn profile...';
+			} else if (cmd === 'github') {
+				window.open(profile.links.github, '_blank');
+				result = 'Opening GitHub repositories...';
+			} else {
+				result = `command not found: ${cmd}`;
+			}
+
+			history = [...history, { cmd, result }];
+			input = '';
+		}
+	}
 </script>
 
-<section class="flex flex-col items-center gap-8 border-t border-zinc-900 py-10 text-center">
-	<div class="space-y-4">
-		<h2 class="text-4xl font-bold tracking-tighter text-white uppercase md:text-6xl">
-			{lang.t('Ready to scale ?', "Prêt à passer à l'échelle ?")}
+<section class="border-t border-zinc-900/50 py-24">
+	<div class="mb-14 text-center">
+		<h2 class="text-4xl font-bold tracking-tight text-white uppercase">
+			{lang.t('Ready to scale?', "Prêt à l'échelle ?")}
 		</h2>
-		<p class="mx-auto max-w-lg text-lg font-light text-zinc-500">
-			{lang.t(
-				"Whether it's a new project or a technical challenge, let's talk about building something that lasts.",
-				"Qu'il s'agisse d'un nouveau projet ou d'un défi technique, discutons pour construire quelque chose de durable."
-			)}
-		</p>
 	</div>
 
-	<div class="flex flex-col items-center gap-4 sm:flex-row">
-		<Button href={profile.links.whatsapp} variant="primary">
-			{lang.t('Start a Conversation', 'Démarrer une Conversation')}
-		</Button>
-		<div class="hidden h-1 w-8 bg-zinc-900 sm:block"></div>
+	<div
+		class="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl"
+	>
+		<!-- Terminal Header -->
+		<div
+			class="flex items-center justify-between border-b border-zinc-900 bg-zinc-900/40 px-5 py-3"
+		>
+			<div class="flex gap-2">
+				<div class="h-3 w-3 rounded-full bg-zinc-800"></div>
+				<div class="h-3 w-3 rounded-full bg-zinc-800"></div>
+				<div class="h-3 w-3 rounded-full bg-zinc-800"></div>
+			</div>
+			<span class="font-mono text-[10px] tracking-widest text-zinc-600 uppercase"
+				>zsh — contact</span
+			>
+		</div>
+
+		<!-- Terminal Body -->
+		<div class="scrollbar-hide h-64 overflow-y-auto p-6 font-mono text-sm leading-relaxed">
+			{#each history as entry, i (entry.cmd + i)}
+				<div class="mb-3">
+					<div class="flex items-center gap-2">
+						<span class="text-emerald-500/80">➜</span>
+						<span class="text-zinc-500">~</span>
+						<span class="text-white">{entry.cmd}</span>
+					</div>
+					<div class="mt-1 pl-6 whitespace-pre-wrap text-zinc-500">{entry.result}</div>
+				</div>
+			{/each}
+
+			<div class="flex items-center gap-2">
+				<span class="text-emerald-500/80">➜</span>
+				<span class="text-zinc-500">~</span>
+				<input
+					type="text"
+					bind:value={input}
+					onkeydown={handleCommand}
+					placeholder={lang.t("type 'help' to start...", "tapez 'help' pour commencer...")}
+					class="flex-1 bg-transparent text-white outline-none placeholder:text-zinc-800"
+				/>
+			</div>
+		</div>
+	</div>
+
+	<!-- Secondary options -->
+	<div class="mt-10 flex justify-center gap-8">
+		<a
+			href={profile.links.github}
+			class="font-mono text-[10px] tracking-widest text-zinc-700 uppercase transition-colors hover:text-white"
+		>
+			[github://]
+		</a>
+		<a
+			href={profile.links.whatsapp}
+			class="font-mono text-[10px] tracking-widest text-zinc-700 uppercase transition-colors hover:text-white"
+		>
+			[whatsapp://]
+		</a>
 		<a
 			href={profile.links.linkedin}
-			target="_blank"
-			rel="noreferrer"
-			class="text-sm font-medium text-zinc-500 underline underline-offset-8 transition-colors hover:text-white"
+			class="font-mono text-[10px] tracking-widest text-zinc-700 uppercase transition-colors hover:text-white"
 		>
-			{lang.t('LinkedIn Profile', 'Profil LinkedIn')}
+			[linkedin://]
 		</a>
 	</div>
 </section>
