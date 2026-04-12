@@ -13,6 +13,7 @@ export type Project = {
 	architecture: (string | LocalizedString)[];
 	challenge?: { en: string; fr: string };
 	solution?: { en: string; fr: string };
+	status?: 'production' | 'development';
 };
 
 export const projects: Project[] = [
@@ -108,7 +109,8 @@ export const projects: Project[] = [
 			{ en: 'Lead Management Module', fr: 'Module de gestion des prospects' },
 			{ en: 'Relationship Management Layer', fr: 'Couche de gestion de la relation client' },
 			{ en: 'Pipeline Service', fr: 'Service de Pipeline' }
-		]
+		],
+		status: 'production'
 	},
 	{
 		slug: 'venone-web',
@@ -134,7 +136,8 @@ export const projects: Project[] = [
 			{ en: 'Rental Workflow Engine', fr: 'Moteur de workflow de location' },
 			{ en: 'Identity Service', fr: 'Service d’identité' },
 			{ en: 'Multiformat client API', fr: 'API client multiformat' }
-		]
+		],
+		status: 'production'
 	},
 	{
 		slug: 'mp3music-player',
