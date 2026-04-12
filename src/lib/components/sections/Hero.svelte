@@ -39,12 +39,6 @@
 				<Button href={profile.links.linkedin} variant="secondary"
 					>{lang.t("Let's connect", 'Parlons ensemble')}</Button
 				>
-				<button
-					onclick={() => window.print()}
-					class="ml-4 font-mono text-[10px] tracking-[0.2em] text-zinc-600 uppercase transition-colors hover:text-white print:hidden"
-				>
-					[{lang.t('Get CV', 'Télécharger CV')}]
-				</button>
 			</div>
 		</div>
 
