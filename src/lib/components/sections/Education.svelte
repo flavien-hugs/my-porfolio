@@ -19,35 +19,43 @@
 			<h3 class="mb-8 font-mono text-[10px] tracking-[0.3em] text-zinc-700 uppercase">
 				{lang.t('Degrees', 'Diplômes')}
 			</h3>
-			<ul class="space-y-12 border-l border-zinc-900 pl-8">
+			<ul class="space-y-12 border-l border-zinc-900/80 pl-10">
 				{#each education as ed, i (i)}
 					<li class="relative">
 						<!-- Dot on the vertical line -->
 						<div
-							class="absolute top-1.5 -left-[36px] h-2 w-2 rounded-full border border-zinc-800 bg-zinc-950 transition-all duration-300 hover:scale-125 hover:bg-white"
+							class="absolute top-1.5 -left-[45px] h-3 w-3 rounded-full border border-zinc-800 bg-zinc-950 transition-all duration-300 hover:scale-125 hover:bg-white"
 						></div>
 
-						<div class="flex flex-col gap-2">
-							<div class="flex items-center gap-3">
-								<h4 class="text-lg font-bold tracking-tight text-white">
+						<div class="flex flex-col gap-3">
+							<div class="flex flex-wrap items-center gap-4">
+								<h4 class="text-xl font-bold tracking-tight text-white">
 									{lang.t(ed.degree.en, ed.degree.fr)}
 								</h4>
 								{#if ed.status === 'in-progress'}
 									<span
-										class="rounded-full border border-zinc-700/50 px-2 py-0.5 font-mono text-[9px] text-zinc-500 uppercase"
+										class="rounded-full border border-zinc-700/80 bg-zinc-900/40 px-3 py-0.5 font-mono text-[9px] tracking-widest text-zinc-400 uppercase"
 									>
 										{lang.t('In Progress', 'En Cours')}
 									</span>
 								{/if}
 							</div>
-							<p class="text-sm text-zinc-400">
+							<p class="text-sm font-medium tracking-wide text-zinc-500 uppercase">
 								{typeof ed.institution === 'string'
 									? ed.institution
 									: lang.t(ed.institution.en, ed.institution.fr)}
 							</p>
-							<span class="mt-1 font-mono text-[10px] tracking-widest text-zinc-600 uppercase">
-								{typeof ed.period === 'string' ? ed.period : lang.t(ed.period.en, ed.period.fr)}
-							</span>
+							<div class="flex items-center gap-3">
+								<span class="font-mono text-[10px] tracking-[0.2em] text-zinc-500 uppercase">
+									{typeof ed.period === 'string' ? ed.period : lang.t(ed.period.en, ed.period.fr)}
+								</span>
+								{#if ed.location}
+									<span class="h-1 w-1 rounded-full bg-zinc-800"></span>
+									<span class="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">
+										{ed.location}
+									</span>
+								{/if}
+							</div>
 						</div>
 					</li>
 				{/each}
@@ -59,27 +67,52 @@
 			<h3 class="mb-8 font-mono text-[10px] tracking-[0.3em] text-zinc-700 uppercase">
 				{lang.t('Certifications', 'Certifications')}
 			</h3>
-			<ul class="space-y-4">
-				{#each certifications as cert (cert.title)}
-					<li
-						class="group flex items-center justify-between border-b border-zinc-900 pb-4 transition-all duration-300 hover:translate-x-1"
-					>
-						<div class="flex flex-col gap-1">
-							<h4 class="text-xs font-bold tracking-tight text-zinc-300 uppercase">
-								{typeof cert.title === 'string' ? cert.title : lang.t(cert.title.en, cert.title.fr)}
-							</h4>
-							<p class="font-mono text-[10px] text-zinc-600 uppercase">
-								{typeof cert.issuer === 'string'
-									? cert.issuer
-									: lang.t(cert.issuer.en, cert.issuer.fr)} — {cert.year}
-							</p>
-						</div>
-						<span class="font-mono text-[10px] text-zinc-700 group-hover:text-zinc-500">
-							{cert.year}
-						</span>
-					</li>
-				{/each}
-			</ul>
+			<div
+				class="scrollbar-thin scrollbar-track-zinc-900/40 scrollbar-thumb-zinc-700 hover:scrollbar-thumb-zinc-500 max-h-[400px] overflow-y-auto pr-6"
+			>
+				<ul class="space-y-2">
+					{#each certifications as cert (cert.title)}
+						<li
+							class="group relative flex items-center justify-between rounded-xl px-4 py-6 transition-all duration-300 hover:bg-zinc-900/40 hover:pl-6"
+						>
+							<div
+								class="absolute inset-y-4 left-0 w-0.5 bg-white opacity-0 transition-all group-hover:opacity-100"
+							></div>
+
+							<div class="flex flex-col gap-2">
+								<h4 class="text-sm font-bold tracking-tight text-white sm:text-base">
+									{typeof cert.title === 'string'
+										? cert.title
+										: lang.t(cert.title.en, cert.title.fr)}
+								</h4>
+								<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+									<p class="font-mono text-[10px] tracking-[0.2em] text-zinc-500">
+										{typeof cert.issuer === 'string'
+											? cert.issuer
+											: lang.t(cert.issuer.en, cert.issuer.fr)}
+									</p>
+									{#if cert.link}
+										<a
+											href={cert.link}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="flex items-center gap-2 font-mono text-[9px] text-zinc-500 underline decoration-zinc-800 underline-offset-4 transition-all hover:decoration-white"
+										>
+											<span class="text-zinc-600">→</span>
+											{lang.t('VERIFY', 'VÉRIFIER')}
+										</a>
+									{/if}
+								</div>
+							</div>
+							<div class="flex flex-col items-end gap-1">
+								<span class="font-mono text-[11px] font-bold text-zinc-500">
+									{cert.year}
+								</span>
+							</div>
+						</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
 	</div>
 </section>

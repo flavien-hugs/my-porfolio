@@ -21,7 +21,7 @@
 			if (cmd === 'contact') {
 				result = `Email: ${profile.email}\nWhatsApp: ${profile.links.whatsapp}`;
 			} else if (cmd === 'help') {
-				result = 'Available commands: contact, clear, whoami, ping, linkedin';
+				result = 'Available commands: contact, clear, whoami, ping, linkedin, github';
 			} else if (cmd === 'clear') {
 				history = [];
 				input = '';
@@ -31,6 +31,9 @@
 			} else if (cmd === 'linkedin') {
 				window.open(profile.links.linkedin, '_blank');
 				result = 'Opening LinkedIn profile...';
+			} else if (cmd === 'github') {
+				window.open(profile.links.github, '_blank');
+				result = 'Opening GitHub repositories...';
 			} else {
 				result = `command not found: ${cmd}`;
 			}
@@ -94,6 +97,12 @@
 
 	<!-- Secondary options -->
 	<div class="mt-10 flex justify-center gap-8">
+		<a
+			href={profile.links.github}
+			class="font-mono text-[10px] tracking-widest text-zinc-700 uppercase transition-colors hover:text-white"
+		>
+			[github://]
+		</a>
 		<a
 			href={profile.links.whatsapp}
 			class="font-mono text-[10px] tracking-widest text-zinc-700 uppercase transition-colors hover:text-white"
