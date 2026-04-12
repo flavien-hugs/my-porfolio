@@ -39,18 +39,15 @@
 				<Button href={profile.links.linkedin} variant="secondary"
 					>{lang.t("Let's connect", 'Parlons ensemble')}</Button
 				>
-				<button
-					onclick={() => window.print()}
-					class="ml-4 font-mono text-[10px] tracking-[0.2em] text-zinc-600 uppercase transition-colors hover:text-white print:hidden"
-				>
-					[{lang.t('Get CV', 'Télécharger CV')}]
-				</button>
 			</div>
 		</div>
 
-		<!-- Right: Simple Metadata List -->
-		<div class="hidden justify-end lg:flex lg:w-[30%]">
+		<!-- Right: Simple Metadata List & Production Status -->
+		<div class="hidden flex-col gap-10 lg:flex lg:w-[35%]">
 			<div class="flex flex-col gap-8 border-l border-zinc-900 pl-12">
+				<!-- <div class="border-t border-zinc-900/50">
+					<ProductionStatus />
+				</div> -->
 				<div class="flex flex-col gap-1">
 					<span class="font-mono text-[10px] tracking-[0.3em] text-zinc-600 uppercase"
 						>{lang.t('Core Specialization', 'Spécialisation Principale')}</span
@@ -69,7 +66,7 @@
 					<span class="font-mono text-[10px] tracking-[0.3em] text-zinc-600 uppercase"
 						>{lang.t('Primary Stack', 'Stack Primaire')}</span
 					>
-					<span class="text-sm font-medium text-zinc-400">Python / Go</span>
+					<span class="text-sm font-medium text-zinc-400">Python / TypeScript / Go</span>
 				</div>
 			</div>
 		</div>
